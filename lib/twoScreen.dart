@@ -14,7 +14,7 @@ class twoScreen extends StatelessWidget {
               top: 370, // 상단 여백
 
                 child:Container(
-                  // width: 110, // 가로 크기
+                  width: 110, // 가로 크기
                   height: 110, // 세로 크기
                   decoration: BoxDecoration(
                     color: Color(0xFFE7E3D1), // 배경색상
