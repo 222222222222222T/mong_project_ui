@@ -14,6 +14,7 @@ class fourScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xffFAF9E9)),
       home: calendar(),
     );
   }
@@ -46,7 +47,17 @@ class _calendarState extends State<calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Table calendar"),
+        backgroundColor: Color(0xffFAF9E9),
+        elevation: 0.0,
+        title:Container(
+          margin: EdgeInsets.fromLTRB(13, 14, 0, 0),
+            child: Image(
+              width: 60,
+              height: 60,
+              image: AssetImage('imageFile/dog_foot.PNG'),
+            )
+
+        )
       ),
       body:content(),
     );
@@ -55,11 +66,11 @@ class _calendarState extends State<calendar> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text("My Calendar"),
-        Container(
-          width: 800,
-          height: 430,
+        SizedBox(
+          width: 373,
+          height: 420,
           child: TableCalendar(
+            shouldFillViewport: true,
             locale: 'ko-KR',
             firstDay: DateTime.utc(2022,05,01),
             lastDay: DateTime.utc(2023,05,31),
@@ -68,7 +79,8 @@ class _calendarState extends State<calendar> {
               titleCentered: true,
               formatButtonVisible: false,
             ),
-            daysOfWeekHeight: 20, //한국어로 바꾸니까 글자 안맞아서 일~토 높이 20으로 증가
+            daysOfWeekHeight: 40,
+            // daysOfWeekStyle: font,//한국어로 바꾸니까 글자 안맞아서 일~토 높이 20으로 증가
             // calendarStyle: CalendarStyle(
             //     cellMargin: const EdgeInsets.all(7.0),
             //     cellPadding: const EdgeInsets.only(bottom:5.0)
@@ -103,8 +115,8 @@ class _calendarState extends State<calendar> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>fiveScreen()));
         },
             child:Container(
-                width: 380,
-                height: 200,
+                width: 343,
+                height: 155,
                 decoration: BoxDecoration(
                     color: Color(0xffE7E3D1),
                     border: Border.all(width: 2,color: Color(0xffE7E3D1)),
@@ -150,12 +162,14 @@ Widget CalendarCellBuilder(BuildContext context, DateTime dateTime, _, int type)
   String date =dateTime.day.toString();
   String month = dateTime.month.toString();
   return Container(
-      padding: EdgeInsets.all(5),
+      width: 373,
+      height: 390,
+      padding: EdgeInsets.all(0),
       child:Column(
           children:[
             Text(
               date,
-              style: TextStyle(fontSize: 8,color: Color(0xffDBD09E)),
+              style: TextStyle(fontSize: 16,color: Color(0xffDBD09E)),
             ),
             // Image.asset("imageFile/d.png")
             (date=='2' && month=='5')?
@@ -163,7 +177,7 @@ Widget CalendarCellBuilder(BuildContext context, DateTime dateTime, _, int type)
                 child: Image.asset("imageFile/d.png",width: 30,height: 30,),
                 // padding: EdgeInsets.only(top: 1, bottom: 1),
                 width: MediaQuery.of(context).size.width,
-                height:30,
+                height:37,
                 decoration: BoxDecoration(
                     shape:BoxShape.circle,
                     color: Color(0xffE7E3D1)
@@ -172,7 +186,7 @@ Widget CalendarCellBuilder(BuildContext context, DateTime dateTime, _, int type)
             Container(
               // padding: EdgeInsets.only(top: 1, bottom: 1),
               width: MediaQuery.of(context).size.width,
-              height:32,
+              height:38,
               decoration: BoxDecoration(
                 shape:BoxShape.circle,
                 color: Color(0xffE7E3D1),

@@ -10,7 +10,9 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(MaterialApp(home: myApp(),)));
+  initializeDateFormatting().then((_) => runApp(MaterialApp(
+    debugShowCheckedModeBanner: true,
+    home: myApp(),)));
   }
 
 class myApp extends StatefulWidget {
